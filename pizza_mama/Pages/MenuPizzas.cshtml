@@ -5,10 +5,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="~/css/style.css" />
     <title>Menu des Pizzas</title>
 </head>
 <body>
     <h1>Menu des Pizzas</h1>
+    <ul>
+    @foreach (var item in Model.Pizza) 
+    {
+        <li>@Html.DisplayFor(modelItem => item.nom) - @Html.DisplayFor(modelItem => item.prix) $ CA</li>   
+    }
+    </ul>
     <a asp-page="Index">Retour à l'accueil</a>
 </body>
 </html>
