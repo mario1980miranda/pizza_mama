@@ -18,8 +18,10 @@
         {
             <div class="menu_list_item">
                 <span class="menu_list_title">@Html.DisplayFor(modelItem => item.nom)</span>
+                <span class="menu_list_price">@Html.DisplayFor(modelItem => item.prix) $CA</span>
+                <br/>
+                <span class="menu_list_ingredients">@Html.DisplayFor(modelItem => item.ingredients)</span>
             </div>
-            <!--@Html.DisplayFor(modelItem => item.prix) $ CA-->
         }
     </div>
 </body>
