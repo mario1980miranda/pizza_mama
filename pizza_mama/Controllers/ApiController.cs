@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using pizza_mama.Data;
+using pizza_mama.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +13,22 @@ namespace pizza_mama.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class ApiController : ControllerBase
+    public class ApiController : Controller
     {
+        private readonly pizza_mama.Data.DataContext _context;
+
+        public ApiController(DataContext context)
+        {
+            _context = context;
+        }
+
         [HttpGet]
         [Route("GetPizzas")]
-        public IEnumerable<string> GetPizzas()
+        public async Task<IActionResult> GetPizzas()
         {
-            return new string[] { "value1", "value2" };
+            var pizzas = await _context.Pizzas.ToListAsync();
+            pizzas = pizzas.OrderBy(p => p.nom).ToList();
+            return Json(pizzas);
         }
     }
 }
