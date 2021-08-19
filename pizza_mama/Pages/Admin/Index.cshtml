@@ -3,10 +3,15 @@
 @{
 }
 
-<h1>Vous devez vous authentifier</h1>
-@if(Model.DisplayInvalidAccountMessage)
+@if (Model.IsDevelopmentMode)
 {
-    <br/>
+    <p>MODE DEVELOPPMENT</p>
+} 
+
+<h1>Vous devez vous authentifier</h1>
+@if (Model.DisplayInvalidAccountMessage)
+{
+    <br />
     <div class="alert alert-danger" role="alert">
         ERREUR : Compte invalide
     </div>
